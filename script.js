@@ -33,11 +33,8 @@
 			if (element !== document) {
 				// after 1/60 second delay
 				setTimeout(function () {
-					// get element position
-					var rect = element.getBoundingClientRect();
-
 					// scroll to element
-					window.scrollBy(Math.floor(rect.left), Math.floor(rect.top));
+					element.scrollIntoView();
 
 					// focus element
 					element.focus();
