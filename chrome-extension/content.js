@@ -1,7 +1,7 @@
 // return first element in scope containing case-sensitive text 
 function getElementByText(scope, text) {
 	// iterate descendants of scope
-	for (var all = scope.getElementsByTagName('*'), index = 0, element; (element = all[index]); ++index) {
+	for (var all = scope.childNodes, index = 0, element; (element = all[index]); ++index) {
 		// conditionally return element containing visible, case-sensitive text (matched)
 		if ((element.innerText || element.textContent || '').indexOf(text) !== -1) {
 			return getElementByText(element, text);
@@ -30,11 +30,8 @@ function onHashChange() {
 		if (element !== document) {
 			// after 1/60 second delay
 			setTimeout(function () {
-				// get element position
-				var rect = element.getBoundingClientRect();
-
 				// scroll to element
-				window.scrollBy(Math.floor(rect.left), Math.floor(rect.top));
+				element.scrollIntoView();
 
 				// focus element
 				element.focus();
