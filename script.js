@@ -6,7 +6,7 @@
 		// iterate descendants of scope
 		for (var all = scope.getElementsByTagName('*'), index = 0, element; (element = all[index]); ++index) {
 			// conditionally return element containing visible, case-sensitive text (matched)
-			if ((element.innerText || element.textContent).indexOf(text) !== -1) {
+			if ((element.innerText || element.textContent || '').indexOf(text) !== -1) {
 				return getElementByText(element, text);
 			}
 		}
@@ -31,7 +31,7 @@
 
 			// if element found
 			if (element !== document) {
-				// after a brief delay
+				// after 1/60 second delay
 				setTimeout(function () {
 					// get element position
 					var rect = element.getBoundingClientRect();
@@ -54,7 +54,16 @@
 		}
 	}
 
-	// attach events
-	window.addEventListener('hashchange', onHashChange);
-	document.addEventListener('DOMContentLoaded', onHashChange);
+	// event listeners (DEPRECATED: IE8 compatibility)
+	var
+	hasEventListener = 'addEventListener' in window,
+	eventListener = hasEventListener ? 'addEventListener' : 'attachEvent',
+	eventPrefix = hasEventListener ? '' : 'on';
+
+	// listener support matches DOMContentLoaded support
+	if (hasEventListener) document[eventListener](eventPrefix + 'DOMContentLoaded', onHashChange);
+	// DEPRECATED: otherwise use load event 
+	else window[eventListener](eventPrefix + 'load', onHashChange);
+
+	window[eventListener](eventPrefix + 'hashchange', onHashChange);
 })();

@@ -3,7 +3,7 @@ function getElementByText(scope, text) {
 	// iterate descendants of scope
 	for (var all = scope.getElementsByTagName('*'), index = 0, element; (element = all[index]); ++index) {
 		// conditionally return element containing visible, case-sensitive text (matched)
-		if ((element.innerText || element.textContent).indexOf(text) !== -1) {
+		if ((element.innerText || element.textContent || '').indexOf(text) !== -1) {
 			return getElementByText(element, text);
 		}
 	}
@@ -28,7 +28,7 @@ function onHashChange() {
 
 		// if element found
 		if (element !== document) {
-			// after a brief delay
+			// after 1/60 second delay
 			setTimeout(function () {
 				// get element position
 				var rect = element.getBoundingClientRect();
@@ -51,6 +51,6 @@ function onHashChange() {
 	}
 }
 
-// attach events
+// event listeners
 window.addEventListener('hashchange', onHashChange);
 document.addEventListener('DOMContentLoaded', onHashChange);
