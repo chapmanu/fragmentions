@@ -1,6 +1,10 @@
 # Fragmentions
 
-Fragmentions enable you to use ## double-hash anchors as links to individual words or phrases on in a document.
+Fragmentions are anchors to individual words or phrases in a document.
+
+```html
+<a href="##this+specific+text+">Find this specific text</a>
+```
 
 - [Google Chrome Extension](https://chrome.google.com/webstore/detail/fragmentions/pgajkeekgcmgglngchhmcmnkffnhihck)
 - [Indie Web Camp Article](http://indiewebcamp.com/fragmention)
@@ -8,7 +12,7 @@ Fragmentions enable you to use ## double-hash anchors as links to individual wor
 
 ## Usage
 
-Fragmentions finds the first matching word or phrase in a document and focuses its closest surrounding element. The match is determined by the case-sensitive string following the ## double-hash. The closest surrounding element may be a span, paragraph, heading, button, input, or any other container.
+Fragmentions find the first matching word or phrase in a document and focus its closest surrounding element. The match is determined by the case-sensitive string following the ## double-hash. The closest surrounding element may be a span, paragraph, heading, button, input, or any other container.
 
 In the following example, clicking **TL;DR** would scroll to focus the `<strong>` element containing **Life, Liberty and the pursuit of Happiness**.
 
@@ -22,7 +26,7 @@ In the following example, clicking **TL;DR** would scroll to focus the `<strong>
 		When in the Course of human events, it becomes necessary for one people 
 		to dissolve the political bands which have connected them with another, 
 		and to assume among the powers of the earth, the separate and equal 
-		station to which the Laws of Nature and of Nature's God entitle them, a 
+		station to which the Laws of Nature and of Nature’s God entitle them, a 
 		decent respect to the opinions of mankind requires that they should 
 		declare the causes which impel them to the separation.
 	</p>
@@ -34,6 +38,12 @@ In the following example, clicking **TL;DR** would scroll to focus the `<strong>
 		Happiness</strong>.
 	</p>
 </article>
+```
+
+In another example, a `##★★★★☆` unicode fragmention matches a 4/5 star rating.
+
+```html
+<abbr class="rating" title="4" tabindex="0">★★★★☆</abbr>
 ```
 
 
@@ -57,9 +67,11 @@ While most find the idea of fragmentions delightful, there are differing ideas o
 
 ### Double-hashes in the wild
 
-The URL spec doesn't *allow* fragments to contain hash signs, so links like `<a href="##foo">` may fail validation. On the other hand, browsers *do* understand them, so links like `<a href="##foo">` may have two meanings.
+The [URL specification](http://url.spec.whatwg.org/#url-code-points) does not *allow* fragments to contain hash signs, so links like `<a href="##foo">` may fail validation. On the other hand, browsers *do* understand them, so links like `<a href="##foo">` may have two meanings.
 
 The initial feedback is that few people concern themselves with hash fragment validation, and even less would (at least, knowingly) use them in this way.
+
+Other spec-valid alternatives to the **##** double-hash convention include **#@** (*hash + mention*) and **#*** (*hash + footnote*). These alternatives may also be used address case-sensitivity. Speaking of which&hellip;
 
 ### Sensitivity
 
