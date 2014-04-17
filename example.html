@@ -1,0 +1,520 @@
+<!doctype html>
+<title>Fragmentions example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="script.js"></script>
+<style>
+body *:focus, body *:target {
+	background-color: rgba(255,255,0,0.5);
+	outline: 0;
+}
+</style>
+<article class="h-entry">
+	<h1 class="p-name">w3c Annotations meeting <time class="dt-published">2014-04-02</time></h1>
+
+	<p><a href="#some-page-anchor">traditional anchor</a></p>
+	<p><a href="##individual+words+and+phrases">auto anchor</a></p>
+
+	<hr>
+
+	<div class="e-content">
+		<p>
+			<a class="h-card" href="http://bleeds.info/">Randall Leeds</a>:
+		</p>
+		<blockquote>
+			<p>
+				Annotations are additions - links, block quotes, inline - microformats and microdata; out of band webmention + pingback
+			</p>
+			<p>
+				we want annotations to be decentralized, so they need to interoperate with a data model and component models
+			</p>
+			<p>
+				We are going to need syndication and discovery for annotations
+			</p>
+			<p>
+				we want a more read/write web - we deserve the freedom to reference, not overload URI syntax forever
+			</p>
+			<p>
+				how do we go from out of band to inline? How do you show a remote annotation in the text you're reading
+			</p>
+			<p>
+				existing event targets are DOM element, but we want to target the data -the text of the page idea: event.dataTarget
+			</p>
+			<p>
+				how about a selection pseudo element - can we describe a selection, style it and not modify the DOM - like a:visited
+			</p>
+			<p>
+				we need feed discovery - Activity Streams. Also we need to publish locally and use WebMention <a class="auto-link" href="http://indiewebcamp.com/webmention">http://indiewebcamp.com/webmention</a>
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://www.cgallello.com">Chris Gallello</a>:
+		<blockquote>
+			<p>
+				I'm PM on Office Online, working on accessibility - we have annotations in Office and visual studio already
+			</p>
+			<p>
+				red underlines in Word and breakpoints in Visual Studio are annotations form our point of view [machine generated]
+			</p>
+			<p>
+				we've been thinking about how to connect screen readers to annotations - to know there is one, to jump in and out
+			</p>
+			<p>
+				we can use an aria.annotationtype of "comment" and point to the element with the comment with aria.annotatedby
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://github.com/AnnaGerber">Anna Gerber</a>:
+		<blockquote>
+			<p>
+				Annotation is used throughout the research process, and for teaching not just as part of publications
+			</p>
+			<p>
+				researchers need to annotate maps, 3D spaces, protein models, sensor data streams , textual variants
+			</p>
+			<p>
+				scholary annotation requirements: citable; precise; of segments/regions; many data types; within dynamic web apps
+			</p>
+			<p>
+				we need to migrate annotations across multiple copies of identical resources, or modified ones
+			</p>
+			<p>
+				stand-off annotation is needed to maintain integrity of original resources
+			</p>
+			<p>
+				we use the Annotea, OA model so have shared generic backend, but need protocols and APIs too
+			</p>
+			<p>
+				the OA model is extremely flexible, but diffciult to implement as the queries are hard to write
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://seanboisen.com">Sean Boisen</a>:
+		<blockquote>
+			<p>
+				Logos is a digital library for biblical studies, with very rich annotation and cross referencing tools
+			</p>
+			<p>
+				our app is not out on the web, but a desktop app you download.
+			</p>
+			<p>
+				Bible has book/chapter/verse and we add word, but they are different between some bibles
+			</p>
+			<p>
+				we care about cross-lingual word alignment for annotations, which requires extra standardizations
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://whiteink.com">Nick Stenning</a>:
+		<blockquote>
+			<p>
+				data models are simple; protocols harder, but user interactions are hard enough that we'd take us years to agree
+			</p>
+			<p>
+				a bookmarklet is basically a cross-site scripting attack. A standard known as content security policy breaks them
+			</p>
+			<p>
+				Browser extensions are not standardised - every user agent has its own extension model
+			</p>
+			<p>
+				Does anyone know for proposals to allow user-trusted code to run in the DOM in a standard way? Nope
+			</p>
+			<p>
+				we either need to spec ALL the things, or build for pluralism so there are many ways to do it
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://www.linkedin.com/pub/james-williamson/4/324/66b">James Williamson</a>:
+		<blockquote>
+			<p>
+				As a publisher, having notes you take on Kindle not translating to ibooks is really annoying
+			</p>
+			<p>
+				we get complaints from readers all the time about the "1000 people marked this page" stuff in Kindle
+			</p>
+			<p>
+				we do pop-ups of footnotes and publication history in our online journals
+			</p>
+			<p>
+				we have third party annotations from reference management and social media crawling
+			</p>
+			<p>
+				the only way to annotate our works is with the "contact us" button that emails the publisher- can take 2 years
+			</p>
+			<p>
+				we have multiple different annotations at different levels of the publishing process paper/Word/PDF
+			</p>
+			<p>
+				we have extensive annotations in our new journals online product , and for assignments and quizzes
+			</p>
+			<p>
+				what happens to annotations when content has been deleted? Or out of print? [odd concept for web]
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://www.fjhirsch.com/">Frederick Hirsch</a>:
+		<blockquote>
+			<p>
+				people annotate books but also movies and sound too where you have to point at timestamps
+			</p>
+			<p>
+				teachers comment on student assignments and students can respond inline
+			</p>
+			<p>
+				provenance of annotations is important - this brings in identity issues. Iterating them is also hard
+			</p>
+			<p>
+				I don't think we should rework the Open Annotation data model, but we need RESTful search and JSON-LD output
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://github.com/AnnaGerber">Anna Gerber</a>:
+		<blockquote>
+			<p>
+				we have covered the data model but not the protocol.
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="#">Timothy Cole</a>:
+		<blockquote>
+			<p id="some-page-anchor">
+				for scholarly text we need individual words and phrases as anchors, even when adjacent content is updated
+			</p>
+			<p>
+				correction of OCR and manual transcriptions, and of automated part-of-speech tagging
+			</p>
+			<p>
+				we need proposed corrections to be able to be reviewed and annotated themselves
+			</p>
+			<p>
+				for example we annotate the scan with the original OCR and the OCR with the corrections
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://twitter.com/@EricAubourg">Eric Aubourg</a>:
+		<blockquote>
+			<p>
+				STM is a small publisher with complex texts including arabic, hebrew and heiroglyphics
+			</p>
+			<p>
+				our policy is ePub firts, no DRM, one purchase for all formats
+			</p>
+			<p>
+				we have ePub with interactive maps of the Karnak temple that link to images of the wall paintings
+			</p>
+			<p>
+				referencing other works is required for scholarly publications, but page number doesn't work across editions
+			</p>
+			<p>
+				for epub we need something user-raedable and reader-processable - people like "page 23" not ids
+			</p>
+			<p>
+				we need it to be independent of paper, pdf, epub that can survive reflowing, and human readable
+			</p>
+			<p>
+				in epub you can mark the page boundaries of the original document in the HTML but doesn't go the other way
+			</p>
+			<p>
+				numbered paragraphs within chapters can work for finished works - easy to quote
+			</p>
+			<p>
+				we need readable shortcuts, not 64-character hashes - like link shorteners
+			</p>
+			<p>
+				we want the target refernce to be human processable
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://kevinmarks.com">Kevin Marks</a>:
+		<blockquote>
+			<p>
+				q: isn't a quotation from the work the most robust reference across paper+ edocs 10 words are unique?
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://twitter.com/@EricAubourg">Eric Aubourg</a>:
+		<blockquote>
+			<p>
+				yes, quotation is good and robust, and human readable, but it can be a bit long
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://fchasen.com">Fred Chasen</a>:
+		<blockquote>
+			<p>
+				the interactions in the various different document viewers are cumbersome and inconsistent
+			</p>
+			<p>
+				creating the notes content first and then anchoring to the document makes more sense
+			</p>
+			<p>
+				robust note authoring shouldn't block what you are annotating. It should let you re-anchor after composition
+			</p>
+			<p>
+				we need to account for longer notes, that may be longer than the entire text
+			</p>
+			<p>
+				also define print styles for CSS so that users can print out the whole thing
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://twitter.com/@KristofCsillag">Kristof Csillag</a>:
+		<blockquote>
+			<p>
+				at <a class="auto-link" href="http://Hypothes.is">Hypothes.is</a> we're working on an annotation system for the web and we have proposed solutions
+			</p>
+			<p>
+				 annotating web documentsnis good, but we added PDF, Epub and would like to add scribd and google docs too
+			</p>
+			<p>
+				we define a target with generic selectors xpath, but also text position and text content selectors
+			</p>
+			<p>
+				by having multiple selectors we can use fuzzy matching to find the parts we want
+			</p>
+			<p>
+				there is a problem with dynamic sites, we need dynamic anchoring - comments can be oprhaned
+			</p>
+			<p>
+				knowing what is actually the target across documents can be very hard
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://kevinmarks.com">Kevin Marks</a>:
+		<blockquote>
+			<p>
+				if you remove annotations when the document referenced is edited can't unfavourable ones be removed?
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://twitter.com/@KristofCsillag">Kristof Csillag</a>:
+		<blockquote>
+			<p>
+				yes, but we can keep orphaned annotations and possibly keep old versions
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://github.com/AnnaGerber">Anna Gerber</a>:
+		<blockquote>
+			<p>
+				how do you cope with copyright issues of keeping quotations?
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://twitter.com/@KristofCsillag">Kristof Csillag</a>:
+		<blockquote>
+			<p>
+				right now we don't care about copyright - we are focused on making the annotations robust
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://whiteink.com">Nick Stenning</a>:
+		<blockquote>
+			<p>
+				there are difficult problems around how you display disappeared content to the user, and how to reanchor
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://tantek.com/">Tantek Çelik</a>:
+		<blockquote>
+			<p>
+				the anchoring problem is important - cool URLs don't change
+			</p>
+			<p>
+				question the assumption of annotation providers, how about self-hosted annotation, anchor and context too
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://kevinmarks.com">Kevin Marks</a>:
+		<blockquote>
+			<p>
+				we should standardize multiple anchor formats - link, cite, text, image, audio snippet rather than how to be fuzzy
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://github.com/AnnaGerber">Anna Gerber</a>:
+		<blockquote>
+			<p>
+				when thinking about anchoring, focus on the content, not just the document format
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://twitter.com/@robertcasties">Robert Casties</a>:
+		<blockquote>
+			<p>
+				At the Max Planck Institute for the History of Science, we have historical sources in many forms
+			</p>
+			<p>
+				we want to weave a web of knowledge as Jürgen Renn says
+			</p>
+			<p>
+				when you can collect of all the annotations on a source you get a semantic network of the source
+			</p>
+			<p>
+				we want to annotate images in a resolution independent way, we also want to show relationships and provenance
+			</p>
+			<p>
+				we want more complex co-ordinates and representations [why not use <a class="auto-link" href="http://dev.w3.org/html5/spec-preview/image-maps.html">http://dev.w3.org/html5/spec-preview/image-maps.html</a>] ?
+			</p>
+			<p>
+				we could use GeoJSON to point to images how would we add this as selectors?
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="https://twitter.com/@raquelalegre">Raquel Alegre</a>:
+		<blockquote>
+			<p>
+				at University of Reading, I work on CHARMe which annotates climate datasets
+			</p>
+			<p>
+				Scientists get huge numbers of options for data from data providers, but the annotations aren't lined
+			</p>
+			<p>
+				A climate Dataset may be a table, a time series, a map a 3d model or an animation
+			</p>
+			<p>
+				climate data users reserach timing, specific areas of the world, and comparing datasets
+			</p>
+			<p>
+				climate data comes in 2d, 3d and 4d formats - layers of images at different res or sensors
+			</p>
+			<p>
+				we need ways to point to space and time -we have geolocation and time units for most of this
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://greggkellogg.net/">Gregg Kellogg</a>:
+		<blockquote>
+			<p>
+				how can I use an API without coding for it? Define operations on classes and properties
+			</p>
+			<p>
+				annotations are the results of operations acting on entities
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://about.me/jsonhaag">Jason Haag</a>:
+		<blockquote>
+			<p>
+				I'm from the IEEE Learning Technology Standards Committee and we are working on storage APIs
+			</p>
+			<p>
+				our Tin Can API is based on <a class="auto-link" href="http://activitystrea.ms">activitystrea.ms</a> - Actor, Verb, Object
+			</p>
+			<p>
+				the xAPI records learning experiences using activites
+			</p>
+			<p>
+				IEEE wants to use EPUB3 as sustainable format for technical content, with action tracking by xAPI
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://23rdCenturyRomance.com">Jake Hartnell</a>:
+		<blockquote>
+			<p>
+				I'm a science fiction writer - heres a shameless plug for my book a 23rd century romance
+			</p>
+			<p>
+				in 2018, web annotation will be implemented in the browser we can refer to anything
+			</p>
+			<p>
+				the annotation document needs to be stored somewhere - think of it as channels
+			</p>
+			<p>
+				the browser queries all the channels the user subscribes to, kinda like rss feeds and they load in a sidebar
+			</p>
+			<p>
+				Annotation is a kind of advanced linking
+			</p>
+			<p>
+				the browser should provide a space for these attached documents to live and be viewed
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://gerardocapiel.com">Gerardo Capiel</a>:
+		<blockquote>
+			<p>
+				annotation is a powerful tool for accessibility of non-textual content when authors forget to put it in
+			</p>
+			<p>
+				images tend to lack proper descriptions and mathematics is often done as images, not MathML
+			</p>
+			<p>
+				Video description has even less support
+			</p>
+			<p>
+				today, Blind and vision impaired students get support by others annotating video and images
+			</p>
+			<p>
+				we need unified standards for annotation so that the efforts of people who do accessible annotation this can spread
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://creativecommons.org/staff#puneetkishor">Puneet Kishor</a>:
+		<blockquote>
+			<p>
+				Copyright is a rats nest. I'm not a lawyer, I want to avoid unleashing the rats. I work at Creative Commons
+			</p>
+			<p>
+				our job at Creative Commons is to keep this unfettered by the law
+			</p>
+			<p>
+				annotations may not start out with enough original material to be copyrightable, but could grow into cliffs notes
+			</p>
+			<p>
+				every annotation should carry the information with it to determine legal status [presumably cc license]
+			</p>
+			<p>
+				people can assert what they want in the way of attribution and commercial use with CC license
+			</p>
+			<p>
+				our latest version of Creative Commons, CC4 will cover database licences too, Should be stable to use now
+			</p>
+			<p>
+				Creative Commons don't restrict people, they enable people. That's always the goal.
+			</p>
+			<p>
+				you can only licence what you create, not someone else's stuff. The snippets [anchors] should be fair use
+			</p>
+			<p>
+				copyright attaches to original authorship fixed in a tangible medium - CC lets you disclaim
+			</p>
+			<p>
+			</p>
+		</blockquote>
+		<a class="h-card" href="http://tantek.com/">Tantek Çelik</a>:
+		<blockquote>
+			<p>
+				both APA and MLA citation styles for tweets include the entire text of the tweet - they don't mention licensing
+			</p>
+		</blockquote>
+	</div>
+</article>
