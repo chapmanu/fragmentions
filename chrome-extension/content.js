@@ -3,7 +3,7 @@ function getElementByText(scope, text) {
 	// iterate descendants of scope
 	for (var all = scope.childNodes, index = 0, element; (element = all[index]); ++index) {
 		// conditionally return element containing visible, case-sensitive text (matched)
-		if ((element.innerText || element.textContent || '').indexOf(text) !== -1) {
+		if (element.nodeType === 1 && (element.innerText || element.textContent || '').indexOf(text) !== -1) {
 			return getElementByText(element, text);
 		}
 	}
