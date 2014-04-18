@@ -21,6 +21,14 @@
 		var text = location.href.match(/#(#|%23)(.+)/);
 
 		if (text) {
+			// Remove any existing class
+			if (document.getElementsByClassName) {
+				var existing = document.getElementsByClassName('fragmention');
+				Array.prototype.forEach.call(existing, function(el) {
+					el.className = el.className.replace(/\bfragmention\b/, '');
+				});
+			}
+
 			// get element containing text (or return document)
 			var element = getElementByText(
 				// document scope
@@ -38,6 +46,9 @@
 
 					// focus element
 					element.focus();
+
+					// Give element an appropriate class
+					element.className = element.className ? element.className + ' fragmention' : 'fragmention';
 
 					// if element could not be focused
 					if (document.activeElement !== element) {
