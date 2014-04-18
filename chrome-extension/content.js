@@ -15,7 +15,9 @@ function getElementByText(scope, text) {
 // on dom loaded or hash change
 function onHashChange() {
 	// detect auto-anchor
-	var text = location.href.match(/##.+/);
+	// This doesn't use hash because of e.g.
+	// https://bugzilla.mozilla.org/show_bug.cgi?id=378962
+	var text = location.href.match(/#(#|%23)(.+)/);
 
 	if (text) {
 		// get element containing text (or return document)
@@ -23,7 +25,7 @@ function onHashChange() {
 			// document scope
 			document,
 			// uri-decoded text
-			decodeURIComponent(text[0].slice(2).replace(/\+/g, ' '))
+			decodeURIComponent(text[2].replace(/\+/g, ' '))
 		);
 
 		// if element found

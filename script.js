@@ -18,7 +18,7 @@
 	// on dom loaded or hash change
 	function onHashChange() {
 		// detect auto-anchor
-		var text = location.href.match(/##.+/);
+		var text = location.href.match(/#(#|%23)(.+)/);
 
 		if (text) {
 			// get element containing text (or return document)
@@ -26,7 +26,7 @@
 				// document scope
 				document,
 				// uri-decoded text
-				decodeURIComponent(text[0].slice(2).replace(/\+/g, ' '))
+				decodeURIComponent(text[2].replace(/\+/g, ' '))
 			);
 
 			// if element found
