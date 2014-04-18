@@ -27,6 +27,11 @@ if (!('fragmention' in window.location)) (function () {
 		// conditionally remove stashed element fragmention attribute
 		if (element) {
 			element.removeAttribute('fragmention');
+
+			// DEPRECATED: trigger style in IE8
+			if (element.runtimeStyle) {
+				element.runtimeStyle.windows = element.runtimeStyle.windows;
+			}
 		}
 
 		// if fragmention exists
@@ -41,6 +46,11 @@ if (!('fragmention' in window.location)) (function () {
 
 				// set fragmention attribute
 				element.setAttribute('fragmention', '');
+
+				// DEPRECATED: trigger style in IE8
+				if (element.runtimeStyle) {
+					element.runtimeStyle.windows = element.runtimeStyle.windows;
+				}
 			}
 			// otherwise clear stashed element
 			else {
@@ -53,6 +63,17 @@ if (!('fragmention' in window.location)) (function () {
 	var element;
 
 	// add listeners
-	document.addEventListener('DOMContentLoaded', onHashChange);
-	window.addEventListener('hashchange', onHashChange);
+	if ('addEventListener' in window) {
+		window.addEventListener('hashchange', onHashChange);
+		document.addEventListener('DOMContentLoaded', onHashChange);
+	}
+	// DEPRECATED: otherwise use old IE attachEvent
+	else {
+		window.attachEvent('onhashchange', onHashChange);
+		document.attachEvent('onreadystatechange', function () {
+			if (document.readyState[0] === 'c') {
+				onHashChange();
+			}
+		});
+	}
 })();
