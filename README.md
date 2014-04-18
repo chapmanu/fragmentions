@@ -47,6 +47,8 @@ In another example, a `##★★★★☆` unicode fragmention would jump to the 
 <abbr class="rating" title="4" tabindex="0">★★★★☆</abbr>
 ```
 
+Additionally, **location.fragmention** would return a decoded fragmention, in the same manner that **location.hash** would return a decoded hash.
+
 
 
 ## JavaScript polyfill
@@ -57,7 +59,7 @@ Additionally, the location object is given a fragmention property.
 
 ### Browser support
 
-The fragmention polyfill has been successfully tested in desktop Chrome, Firefox, Safari, Opera, and Internet Explorer, as well as Firefox on Android and Safari on iOS. Legacy Internet Explorer 8 is also supported, but marked as deprecated.
+The fragmention polyfill has been successfully tested in desktop Chrome, Firefox, Safari, Opera, and Internet Explorer, as well as Firefox on Android and Safari on iOS. Legacy Internet Explorer browsers (6-8) are also supported, but marked as deprecated.
 
 <small>Notes: The script is less than 500 bytes when uglified and gzipped. If existing fragmention support is detected on the location object, the polyfill is ignored. To work around an issue with Firefox decoding location hash, location href is used to interpret fragmentions instead. To work around various issues with old IE, light hacking ensues.</small>
 
@@ -65,7 +67,7 @@ The fragmention polyfill has been successfully tested in desktop Chrome, Firefox
 
 ## Chrome extension
 
-The [fragmention extension](https://chrome.google.com/webstore/detail/fragmentions/pgajkeekgcmgglngchhmcmnkffnhihck) for Google Chrome lets documents to respond to fragmentions, duplicating the functionality of the JavaScript polyfill.
+The [fragmention extension](https://chrome.google.com/webstore/detail/fragmentions/pgajkeekgcmgglngchhmcmnkffnhihck) for Google Chrome duplicates the functionality of the JavaScript polyfill for all pages on the internet. Thanks to feature detection, the extension will not conflict with pages already using the polyfill or future versions of Chrome that may support fragmentions.
 
 
 
