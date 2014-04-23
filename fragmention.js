@@ -6,23 +6,27 @@ if (!('fragmention' in window.location)) (function () {
 	location.fragmention = location.fragmention || '';
 
 	// return first element in scope containing case-sensitive text 
-	function getElementByText(scope, text) {
+	function getElementsByText(scope, text) {
 		// iterate descendants of scope
-		for (var all = scope.childNodes, index = 0, element; (element = all[index]); ++index) {
+		for (var all = scope.childNodes, index = 0, element, list = []; (element = all[index]); ++index) {
 			// conditionally return element containing visible, whitespace-insensitive, case-sensitive text (a match)
 			if (element.nodeType == 1 && (element.innerText || element.textContent || '').replace(/\s+/g, ' ').indexOf(text) !== -1) {
-				return getElementByText(element, text);
+				list = list.concat(getElementsByText(element, text));
 			}
 		}
 
 		// return scope (no match)
-		return scope;
+		return list.length ? list : scope;
 	}
 
 	// on dom ready or hash change
 	function onHashChange() {
 		// set location fragmention as uri-decoded text (from href, as hash may be decoded)
-		location.fragmention = decodeURIComponent((location.href.match(/#(#|%23)(.+)/) || [0,0,''])[2].replace(/\+/g, ' '));
+		var
+		match = decodeURIComponent((location.href.match(/#(#|%23)(.+)/) || [0,0,''])[2]).replace(/\+/g, ' ').split('  ');
+
+		location.fragmention = match[0];
+		location.fragmentionIndex = parseFloat(match[1]) || 0;
 
 		// conditionally remove stashed element fragmention attribute
 		if (element) {
@@ -36,11 +40,20 @@ if (!('fragmention' in window.location)) (function () {
 
 		// if fragmention exists
 		if (location.fragmention) {
-			// get element containing text (or return document)
-			element = getElementByText(document, location.fragmention);
+			var
+			// get all elements containing text (or document)
+			elements = getElementsByText(document, location.fragmention),
+			// get total number of elements
+			length   = elements.length,
+			// get index of element
+			modulus  = length && location.fragmentionIndex % length,
+			index    = length && modulus >= 0 ? modulus : length + modulus;
+
+			// get element
+			element = length && elements[index];
 
 			// if element found
-			if (element !== document) {
+			if (element) {
 				// scroll to element
 				element.scrollIntoView();
 
