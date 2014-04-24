@@ -23,7 +23,9 @@ if (!('fragmention' in window.location)) (function () {
 	function onHashChange() {
 		// set location fragmention as uri-decoded text (from href, as hash may be decoded)
 		var
-		match = decodeURIComponent((location.href.match(/#(#|%23)(.+)/) || [0,0,''])[2]).replace(/\+/g, ' ').split('  ');
+		id = location.href.match(/#(#|%23)?(.+)/) || [0,'',''],
+		node = document.getElementById(id[1]+id[2]),
+		match = decodeURIComponent(id[2]).replace(/\+/g, ' ').split('  ');
 
 		location.fragmention = match[0];
 		location.fragmentionIndex = parseFloat(match[1]) || 0;
@@ -39,7 +41,7 @@ if (!('fragmention' in window.location)) (function () {
 		}
 
 		// if fragmention exists
-		if (location.fragmention) {
+		if (!node && location.fragmention) {
 			var
 			// get all elements containing text (or document)
 			elements = getElementsByText(document, location.fragmention),

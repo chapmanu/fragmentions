@@ -11,16 +11,24 @@ body :target, body [fragmention] {
 <article class="h-entry">
 	<h1 class="p-name">w3c Annotations meeting <time class="dt-published">2014-04-02</time></h1>
 
-	<p><a href="#some-page-anchor">A traditional link</a></p>
-	<p><a href="##individual+words+and+phrases">A fragmention link</a></p>
+	<p><a href="#some-page-anchor">A traditional link (uses ID)</a></p>
+	<p><a href="##OCR+and+manual+transcriptions">A fragmention link (uses text)</a></p>
 
 	<hr>
+
+	<p><a href="##the">The first element mentioning “the”</a></p>
+
+	<p><a href="##the++-1">The last element mentioning “the”</a></p>
+
+	<p><a href="#the++-1">The last element mentioning “the” (single hash)</a></p>
+
+	<p><a href="##b1">An element with an ID of “#b1”</a></p>
 
 	<div class="e-content">
 		<p>
 			<a class="h-card" href="http://bleeds.info/">Randall Leeds</a>:
 		</p>
-		<blockquote>
+		<blockquote id="#b1">
 			<p>
 				Annotations are additions - links, block quotes, inline - microformats and microdata; out of band webmention + pingback
 			</p>
