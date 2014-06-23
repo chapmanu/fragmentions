@@ -92,3 +92,7 @@ Fragmentions are decoded before search, which means **+** plus signs are interpr
 ## Looks good to me
 
 Thanks, now [test it yourself](https://github.com/chapmanu/fragmentions/blob/master/example.html), [give us feedback](https://github.com/chapmanu/fragmentions/issues), and have fun!
+
+---
+
+The fragmention script is 2.8KB or 578B minified + gzipped.
