@@ -1,16 +1,14 @@
-'use strict';
-
 // detect native/existing fragmention support
 if (!('fragmention' in window.location)) (function () {
 	// populate fragmention
 	location.fragmention = location.fragmention || '';
 
-	// return first element in scope containing case-sensitive text 
+	// return first element in scope containing case-sensitive text
 	function getElementsByText(scope, text) {
 		// iterate descendants of scope
 		for (var all = scope.childNodes, index = 0, element, list = []; (element = all[index]); ++index) {
 			// conditionally return element containing visible, whitespace-insensitive, case-sensitive text (a match)
-			if (element.nodeType == 1 && (element.innerText || element.textContent || '').replace(/\s+/g, ' ').indexOf(text) !== -1) {
+			if (element.nodeType === 1 && (element.innerText || element.textContent || '').replace(/\s+/g, ' ').indexOf(text) !== -1) {
 				list = list.concat(getElementsByText(element, text));
 			}
 		}

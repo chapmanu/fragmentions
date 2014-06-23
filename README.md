@@ -11,8 +11,6 @@ Fragmentions are anchors to individual words or phrases in a document.
 - [WordPress Plugin](https://christiaanconover.com/code/wp-fragmention)
 - [Drupal Module](https://drupal.org/node/2247785)
 
-
-
 ## Usage
 
 Fragmentions use **##** double-hash changes to match words or phrases in a document, jumping to their corresponding element. Matches are case sensitive and whitespace insensitive. Corresponding elements may be spans, paragraphs, headings, buttons, inputs, or any other container element.
@@ -55,8 +53,6 @@ While elements should not use IDs leading with a **#** single-hash, **##** doubl
 
 While fragmentions should lead with a **##** double-hash, single-hash fragments with no matching ID (e.g. **#and+justice+for+all**) will be interpretted as fragmentions.
 
-
-
 ## JavaScript polyfill
 
 The [fragmention polyfill](https://github.com/chapmanu/fragmentions/blob/master/fragmention.js) lets documents respond to fragmentions. When a fragmention is detected, the document is searched for its matching text. If a match is found, the window jumps to its corresponding element, adding a **fragmention** attribute for styling.
@@ -69,13 +65,9 @@ The fragmention polyfill has been successfully tested in desktop Chrome, Firefox
 
 <small>Notes: If existing fragmention support is detected on the **window.location** object, the polyfill is ignored. To work around an issue with Firefox decoding **location.hash**, **location.href** is used to interpret fragmentions instead. To work around various issues with old IE, light hacking ensues.</small>
 
-
-
 ## Chrome extension
 
 The [fragmention extension](https://chrome.google.com/webstore/detail/fragmentions/pgajkeekgcmgglngchhmcmnkffnhihck) for Google Chrome duplicates the functionality of the JavaScript polyfill for all pages on the internet. Thanks to feature detection, the extension will not conflict with pages already using the JavaScript polyfill or future versions of Chrome that may support fragmentions.
-
-
 
 ## Challenges
 
@@ -96,8 +88,6 @@ Fragmentions are case sensitive, making it easier to target specific text. Howev
 ### Encoding
 
 Fragmentions are decoded before search, which means **+** plus signs are interpreted as spaces. This makes for prettier, conforming URLs, but may also be confusing for users targeting phrases using the space character. Therefore, plus signs in content must be escaped as **%2B**.
-
-
 
 ## Looks good to me
 
