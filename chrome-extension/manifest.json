@@ -3,7 +3,7 @@
 	"name": "Fragmentions",
 	"short_name": "Fragmentions",
 	"description": "Use ## double-hash anchors as links to individual words or phrases on in a document.",
-	"version": "0.4.2",
+	"version": "0.5.1",
 	"permissions": ["contextMenus", "tabs"],
 	"background": {
 		"scripts": ["background.js"]
