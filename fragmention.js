@@ -19,6 +19,9 @@ if (!('fragmention' in window.location)) (function () {
 
 	// on dom ready or hash change
 	function onHashChange() {
+		// do nothing if the dom is not ready
+		if (!/e/.test(document.readyState)) return;
+
 		// set location fragmention as uri-decoded text (from href, as hash may be decoded)
 		var
 		id = location.href.match(/#((?:#|%23)?)(.+)/) || [0,'',''],
@@ -72,21 +75,16 @@ if (!('fragmention' in window.location)) (function () {
 		}
 	}
 
+	var
+	// DEPRECATED: configure listeners
+	defaultListener = 'addEventListener',
+	addEventListener = defaultListener in window ? [defaultListener, ''] : ['attachEvent', 'on'],
 	// set stashed element
-	var element;
+	element;
 
 	// add listeners
-	if ('addEventListener' in window) {
-		window.addEventListener('hashchange', onHashChange);
-		document.addEventListener('DOMContentLoaded', onHashChange);
-	}
-	// DEPRECATED: otherwise use old IE attachEvent
-	else {
-		window.attachEvent('onhashchange', onHashChange);
-		document.attachEvent('onreadystatechange', function () {
-			if (document.readyState[0] === 'c') {
-				onHashChange();
-			}
-		});
-	}
+	window[addEventListener[0]](addEventListener[1] + 'hashchange', onHashChange);
+	document[addEventListener[0]](addEventListener[1] + 'readystatechange', onHashChange);
+
+	onHashChange();
 })();

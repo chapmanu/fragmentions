@@ -19,6 +19,9 @@ if (!('fragmention' in window.location)) (function () {
 
 	// on dom ready or hash change
 	function onHashChange() {
+		// do nothing if the dom is not ready
+		if (!/e/.test(document.readyState)) return;
+
 		// set location fragmention as uri-decoded text (from href, as hash may be decoded)
 		var
 		id = location.href.match(/#((?:#|%23)?)(.+)/) || [0,'',''],
@@ -62,10 +65,13 @@ if (!('fragmention' in window.location)) (function () {
 		}
 	}
 
+	var
 	// set stashed element
-	var element;
+	element;
 
 	// add listeners
 	document.addEventListener('DOMContentLoaded', onHashChange);
 	window.addEventListener('hashchange', onHashChange);
+
+	onHashChange();
 })();
