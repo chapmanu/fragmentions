@@ -26,7 +26,7 @@ if (!('fragmention' in window.location)) (function () {
 		var
 		id = location.href.match(/#((?:#|%23)?)(.+)/) || [0,'',''],
 		node = document.getElementById(id[1]+id[2]),
-		match = decodeURIComponent(id[2]).replace(/\+/g, ' ').split('  ');
+		match = decodeURIComponent(id[2].replace(/\+/g, ' ')).split('  ');
 
 		location.fragmention = match[0];
 		location.fragmentionIndex = parseFloat(match[1]) || 0;
