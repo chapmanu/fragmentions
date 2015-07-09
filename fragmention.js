@@ -17,6 +17,14 @@ if (!('fragmention' in window.location)) (function () {
 		return list.length ? list : scope;
 	}
 
+	function getAnchorableElementByName(fragment) {
+		var elements = document.getElementsByName(fragment), index = -1;
+
+		while (elements[++index] && !/^A(REA)?$/.test(elements[index].nodeName)) {}
+
+		return elements[index];
+	}
+
 	// on dom ready or hash change
 	function onHashChange() {
 		// do nothing if the dom is not ready
@@ -25,7 +33,7 @@ if (!('fragmention' in window.location)) (function () {
 		// set location fragmention as uri-decoded text (from href, as hash may be decoded)
 		var
 		id = location.href.match(/#((?:#|%23)?)(.+)/) || [0,'',''],
-		node = document.getElementById(id[1]+id[2]),
+		node = document.getElementById(id[1]+id[2]) || getAnchorableElementByName(id[1]+id[2]),
 		match = decodeURIComponent(id[2].replace(/\+/g, ' ')).split('  ');
 
 		location.fragmention = match[0];
