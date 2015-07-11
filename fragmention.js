@@ -70,6 +70,9 @@ if (!('fragmention' in window.location)) (function () {
 
 				// set fragmention attribute
 				element.setAttribute('fragmention', '');
+				element.setAttribute('tabindex', '0');
+				element.focus();
+
 
 				// DEPRECATED: trigger style in IE8
 				if (element.runtimeStyle) {
