@@ -33,11 +33,16 @@ if (!('fragmention' in window.location)) (function () {
 		// set location fragmention as uri-decoded text (from href, as hash may be decoded)
 		var
 		id = location.href.match(/#((?:#|%23)?)(.+)/) || [0,'',''],
-		node = document.getElementById(id[1]+id[2]) || getAnchorableElementByName(id[1]+id[2]),
+		node,
 		match = decodeURIComponent(id[2].replace(/\+/g, ' ')).split('  ');
 
 		location.fragmention = match[0];
 		location.fragmentionIndex = parseFloat(match[1]) || 0;
+
+		// check if the id exists to prevent JS warnings
+		if (id[1]+id[2]) {
+		 node = document.getElementById(id[1]+id[2]) || getAnchorableElementByName(id[1]+id[2]);
+		}
 
 		// conditionally remove stashed element fragmention attribute
 		if (element) {
